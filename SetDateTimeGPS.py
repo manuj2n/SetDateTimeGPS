@@ -58,7 +58,7 @@ except Exception as e:
     print("Serial port failed")
     print(e)
 
-print "Receiving GPS data"
+print("Receiving GPS data")
 ser = serial.Serial(port, baudrate = 115200, timeout = 0.5,rtscts=True, dsrdtr=True)
 while True:
    data = ser.readline().decode('utf-8')
