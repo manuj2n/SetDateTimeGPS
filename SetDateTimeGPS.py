@@ -8,7 +8,7 @@ portwrite = "/dev/ttyUSB2"
 port = "/dev/ttyUSB1"
 
 def parseGPS(data):
-    print "raw:", data #prints raw data
+    print("raw:", data) #prints raw data
     if data[0:6] == "$GPRMC":
         sdata = data.split(",")
         if sdata[2] == 'V':
@@ -29,9 +29,9 @@ def parseGPS(data):
         dc = degreeChecksum.split("*")
         degree = dc[0]        #degree
         checksum = dc[1]      #checksum
-        print "time : %s, latitude : %s(%s), longitude : %s(%s), speed : %s, True Course : %s, Date : %s, Magnetic Variation : %s(%s),Checksum : %s "%    (time,lat,dirLat,lon,dirLon,speed,trCourse,date,variation,degree,checksum)
+        print("time : %s, latitude : %s(%s), longitude : %s(%s), speed : %s, True Course : %s, Date : %s, Magnetic Variation : %s(%s),Checksum : %s "%    (time,lat,dirLat,lon,dirLon,speed,trCourse,date,variation,degree,checksum))
     else:
-        print "Printed data is ",data[0:6]
+        print("Printed data is ",data[0:6])
 def decode(coord):
     #Converts DDDMM.MMMMM -> DD deg MM.MMMMM min
     x = coord.split(".")
@@ -41,7 +41,7 @@ def decode(coord):
     min = head[-2:]
     return deg + " deg " + min + "." + tail + " min"
 
-print "Connecting port"
+print("Connecting port")
 try:
     serw = serial.Serial(portwrite, baudrate = 115200, timeout = 1,rtscts=True, dsrdtr=True)
     serw.write('AT+QGPS=1\r')
