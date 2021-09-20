@@ -12,9 +12,9 @@ def parseGPS(data):
     if data[0:6] == "$GPRMC":
         sdata = data.split(",")
         if sdata[2] == 'V':
-            print "no satellite data available"
+            print("no satellite data available")
             return
-        print "-----Parsing GPRMC-----"
+        print("-----Parsing GPRMC-----")
         time = sdata[1][0:2] + ":" + sdata[1][2:4] + ":" + sdata[1][4:6]
         lat = decode(sdata[3]) #latitude
         dirLat = sdata[4]      #latitude direction N/S
